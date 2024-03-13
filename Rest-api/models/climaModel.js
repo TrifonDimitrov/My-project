@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema.Types;
 
-const modelShema = new mongoose.Schema({
-    climaModel: {
+const ClimateSchema = new mongoose.Schema({
+    owner: {
+        type: ObjectId,
+        ref: 'User', 
+        required: true
+    },
+    brand: {
         type: String,
         required: true
     },
-    energyClass: {
+    model: {
         type: String,
         required: true
     },
@@ -14,26 +19,22 @@ const modelShema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    heatingCapacity: {
-        type: Number,
-        required: true
-    },
-    powerConsumption: {
-        type: Number,
+    heatingCapacity: Number,
+    energyEfficiencyRating: {
+        type: String,
+        enum: ['A+++', 'A++', 'A+', 'A', 'B', 'C'],
         required: true
     },
     price: {
         type: Number,
         required: true
     },
-    image: {
-        type: String,
-        required: true,
-    },
-    description: {
-        type: String,
-        required: true
-    }, 
-}, {timestamps: {createdAt: 'created_at'}});
+    description: String,
+    imageUrl: String,
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+});
 
-module.exports = mongoose.model('Model', modelShema);
+module.exports = mongoose.model('Climate', ClimateSchema);
