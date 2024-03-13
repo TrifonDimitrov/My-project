@@ -8,10 +8,11 @@ import { SharedModule } from './shared/shared.module';
 import { MainComponent } from './main/main.component';
 import { ClimaListComponent } from './clima-list/clima-list.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, MainComponent, ClimaListComponent, PostsListComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, SharedModule],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, SharedModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
