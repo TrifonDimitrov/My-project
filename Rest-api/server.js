@@ -5,10 +5,10 @@ const modelShema = require('./models/climaModel');
 
 const app = express();
 
-// app.use(cors({
-   // origin: // 'http://localhost:4200', // Angular
+app.use(cors({
+   origin:  'http://localhost:4200', // Angular
 
-//}));
+}));
 
 mongoose.connect('mongodb://localhost:27017/mydb')
 .then(() => console.log("Connected to MongoDB"))
@@ -16,7 +16,7 @@ mongoose.connect('mongodb://localhost:27017/mydb')
 
 
 
-app.get('/api/data', async (req, res) => {
+app.get('/api/models', async (req, res) => {
     const data = await modelShema.find();
     res.send(data);
 });
