@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
+import { Climate } from './types/climate.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,10 @@ import { environment } from 'src/environments/environment.development';
 export class ApiService {
   constructor(private http: HttpClient) { }
 
-  getModels() {
+  getClimates() {
     const { apiUrl } = environment;
 
-    return this.http.get(`${apiUrl}/models`);
+    return this.http.get<Climate[]>(`${apiUrl}/climates`);
   }
 
   getPosts() {}

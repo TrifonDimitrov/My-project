@@ -1,0 +1,28 @@
+.climate-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .climate {
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .climate img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .climate h2 {
+    margin-top: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .climate p {
+    margin: 5px 0;
+  }
