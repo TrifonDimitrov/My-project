@@ -1,6 +1,11 @@
 .climate-container {
+  width: auto;
+  height: auto;
+  margin: auto;
+  background:fixed;
+  color: #341aaa;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
@@ -8,8 +13,8 @@
   width: 300px;
   margin: 20px;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: 1px solid wheat;
+  border-radius: auto;
   text-align: center;
 }
 
@@ -25,4 +30,26 @@
 
 .climate p {
   margin: 5px 0;
+}
+
+.climate button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #472194;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.like button {
+  padding: 10px 20px;
+  border: none;
+  background-color: red;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-top: 10px;
 }

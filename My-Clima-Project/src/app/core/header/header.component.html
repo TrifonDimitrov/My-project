@@ -1,1 +1,15 @@
-<p>header works!</p>
+<header>
+  <div class="header">
+    <img src="https://clima.bg/userfiles/logo/climabglogo.png" />
+    <div class="header-right">
+      <a class="active" href="/models">Models</a>
+      <a href="/add model" (click)="climaForm.onSubmit()">Add model</a>
+      <a href="/about">About</a>
+      <div *ngIf="!isLoggedIn">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      </div>
+    </div>
+  </div>
+</header>
+

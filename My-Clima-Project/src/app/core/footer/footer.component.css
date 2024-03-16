@@ -1,0 +1,32 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+footer {
+  background-color: rgb(29, 143, 160);
+  color: white;
+  padding: 20px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  margin-right: 20px;
+}
+
+.social-links a {
+  color: #fff;
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.social-links a:hover {
+  color: #0d20c7; /* Синьо за Facebook */
+}
+
+.social-links a:last-child {
+  margin-right: 0;
+}
