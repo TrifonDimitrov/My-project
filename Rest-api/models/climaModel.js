@@ -34,7 +34,11 @@ const ClimateSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    likes: [{
+        type: ObjectId,
+        ref: "User"
+    }],
 });
 
 module.exports = mongoose.model('Climate', ClimateSchema);

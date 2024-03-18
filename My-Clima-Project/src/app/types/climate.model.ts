@@ -11,4 +11,5 @@ export interface Climate {
     description: string;
     imageUrl: string;
     createdAt: Date;
+    likes: string[];
 }
