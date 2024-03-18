@@ -1,33 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Климатици</title>
-    <link rel="stylesheet" type="text/css" href="clima-list.component.css" />
-  </head>
-  <body>
-    <div class="climate-container">
-      <div *ngFor="let clima of climates" class="climate">
-        <img
-          src="https://clima.bg/userfiles/productlargeimages/product_4225.jpg"
-          alt="Климатик 1"
-        />
-        <h2>{{ clima.model }}</h2>
-        <p>Brand:{{ clima.brand }}</p>
-        <p>CoolingCapacity: {{ clima.coolingCapacity }}</p>
-        <p>EnergyEfficiencyRating: {{ clima.energyEfficiencyRating }}</p>
-        <p>Price: {{ clima.price }} лв.</p>
-        <div *ngIf="isLoggedIn" class="button">
-          <button><Details></Details></button>
-          <div class="likes">
-            <button class="likes">like</button>
-            <p>
-              likes: <span>{{ clima.likes?.length || 0 }}</span>
-            </p>
-          </div>
+<main>
+  <div class="climate-container">
+    <div *ngFor="let clima of climates" class="climate">
+      <img
+        src="https://clima.bg/userfiles/productlargeimages/product_4225.jpg"
+        alt="Климатик 1"
+      />
+      <h2>{{ clima.model }}</h2>
+      <p>Brand:{{ clima.brand }}</p>
+      <p>CoolingCapacity: {{ clima.coolingCapacity }}</p>
+      <p>EnergyEfficiencyRating: {{ clima.energyEfficiencyRating }}</p>
+      <p>Price: {{ clima.price }} лв.</p>
+      <div *ngIf="isLoggedIn" class="button">
+        <button><Details></Details></button>
+        <div class="likes">
+          <button class="likes">like</button>
+          <p>
+            likes: <span>{{ clima.likes?.length || 0 }}</span>
+          </p>
         </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+</main>

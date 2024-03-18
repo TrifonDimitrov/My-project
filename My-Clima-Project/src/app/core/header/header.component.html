@@ -2,9 +2,9 @@
   <div class="header">
     <img src="https://clima.bg/userfiles/logo/climabglogo.png" />
     <div class="header-right">
-      <a class="active" href="/models">Models</a>
-      <a href="/add model">Add model</a>
-      <a href="/about">About</a>
+      <a class="active" routerLink="/models">Models</a>
+      <a routerLink="/add model">Add model</a>
+      <a routerLink="/about">About</a>
       <div *ngIf="!isLoggedIn">
         <a routerLink="/login">Login</a>
         <a routerLink="/register">Register</a>
