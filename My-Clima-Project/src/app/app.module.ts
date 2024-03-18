@@ -10,11 +10,12 @@ import { ClimaListComponent } from './clima-list/clima-list.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ClimaFormComponent } from './clima-form/clima-form.component';
+import { AddClimaComponent } from './clima/add-clima/add-clima.component';
+import { CurrentClimaComponent } from './clima/current-clima/current-clima.component';
 
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, ClimaListComponent, PostsListComponent, ClimaFormComponent],
+  declarations: [AppComponent, MainComponent, ClimaListComponent, PostsListComponent, AddClimaComponent, CurrentClimaComponent],
   imports: [BrowserModule, AppRoutingModule, CoreModule, SharedModule, HttpClientModule, FormsModule ],
   providers: [],
   bootstrap: [AppComponent],

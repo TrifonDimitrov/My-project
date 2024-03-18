@@ -20,8 +20,11 @@
         <p>Price: {{ clima.price }} лв.</p>
         <div *ngIf="isLoggedIn" class="button">
           <button><Details></Details></button>
-          <div class="like">
-            <button class="like">like</button>
+          <div class="likes">
+            <button class="likes">like</button>
+            <p>
+              likes: <span>{{ clima.likes?.length || 0 }}</span>
+            </p>
           </div>
         </div>
       </div>
