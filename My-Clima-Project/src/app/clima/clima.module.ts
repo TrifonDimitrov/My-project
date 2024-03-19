@@ -1,17 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AddClimaComponent } from './add-clima/add-clima.component';
 import { CurrentClimaComponent } from './current-clima/current-clima.component';
-
+import { ClimaRoutingModule } from './clima-routing.module';
 
 
 @NgModule({
-  declarations: [
-    AddClimaComponent,
-    CurrentClimaComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+  declarations: [CurrentClimaComponent],
+  imports: [CommonModule, ClimaRoutingModule],
 })
-export class ClimaModule { }
+export class ClimaModule {}
