@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { MainComponent } from './main/main.component';
-import { ClimaListComponent } from './clima-list/clima-list.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +15,7 @@ import { ClimaModule } from './clima/clima.module';
 
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, ClimaListComponent, PostsListComponent, AddClimaComponent],
+  declarations: [AppComponent, PostsListComponent, AddClimaComponent],
   imports: [BrowserModule, AppRoutingModule, CoreModule, SharedModule, HttpClientModule, FormsModule, UserModule, ClimaModule ],
   providers: [],
   bootstrap: [AppComponent],

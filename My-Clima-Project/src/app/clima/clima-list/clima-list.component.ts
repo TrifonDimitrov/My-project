@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
-import { Climate } from '../types/climate.model';
+import { ApiService } from '../../api.service';
+import { Climate } from '../../types/climate.model';
 
 @Component({
   selector: 'app-clima-list',

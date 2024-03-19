@@ -1,0 +1,27 @@
+main {
+  width: 100%;
+}
+/* 
+.container {
+    width: 90%;
+    margin: auto;
+    padding-bottom: 4.5em;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+} */
+
+.container {
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  padding-bottom: 120px;
+  display: justify-content;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  min-height: calc(100vh - 120px);
+  /*  */
+  flex-grow: 1;
+  padding-bottom: 120px;
+}
