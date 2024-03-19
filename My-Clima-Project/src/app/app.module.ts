@@ -11,11 +11,13 @@ import { FormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
 import { AddClimaComponent } from './clima/add-clima/add-clima.component';
 import { ClimaModule } from './clima/clima.module';
+import { HomeComponent } from './home/home.component';
+import { ErrorComponent } from './error/error.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, PostsListComponent, AddClimaComponent],
+  declarations: [AppComponent, PostsListComponent, AddClimaComponent, HomeComponent, ErrorComponent],
   imports: [BrowserModule, AppRoutingModule, CoreModule, SharedModule, HttpClientModule, FormsModule, UserModule, ClimaModule ],
   providers: [],
   bootstrap: [AppComponent],

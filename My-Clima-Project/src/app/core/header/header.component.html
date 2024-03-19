@@ -2,6 +2,23 @@
   <div class="header">
     <img src="https://clima.bg/userfiles/logo/climabglogo.png" />
     <div class="header-right">
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+      <a routerLink="/models" routerLinkActive="active">Models</a>
+      <a routerLink="/add-model" routerLinkActive="active">Add model</a>
+      <a routerLink="/about" routerLinkActive="active">About</a>
+      <div *ngIf="!isLoggedIn">
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+        <a routerLink="/register" routerLinkActive="active">Register</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- <header>
+  <div class="header">
+    <img src="https://clima.bg/userfiles/logo/climabglogo.png" />
+    <div class="header-right">
+      <a routerLink="/home">Home</a>
       <a class="active" routerLink="/models">Models</a>
       <a routerLink="/add-model">Add model</a>
       <a routerLink="/about">About</a>
@@ -11,5 +28,4 @@
       </div>
     </div>
   </div>
-</header>
-
+</header> -->
