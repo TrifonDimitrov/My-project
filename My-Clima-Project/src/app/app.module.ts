@@ -18,7 +18,7 @@ import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [AppComponent, PostsListComponent, AddClimaComponent, HomeComponent, ErrorComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, SharedModule, HttpClientModule, FormsModule, UserModule, ClimaModule ],
+  imports: [BrowserModule, CoreModule, SharedModule, HttpClientModule, FormsModule, UserModule, ClimaModule, AppRoutingModule ],
   providers: [],
   bootstrap: [AppComponent],
 })
