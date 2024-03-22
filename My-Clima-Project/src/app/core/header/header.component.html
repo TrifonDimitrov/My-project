@@ -12,7 +12,7 @@
       </div>
       <div *ngIf="isLoggedIn">
         <a routerLink="/add-model" routerLinkActive="active">Add model</a>
-        <a routerLink="/profile" routerLinkActive="active">Profile</a>
+        <a routerLink="/profile" routerLinkActive="active">{{userProfile}}`s Profile</a>
         <a (click)="logout()" routerLink="/logout" routerLinkActive="active">Logout</a>
         
       </div>

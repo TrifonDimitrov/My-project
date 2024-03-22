@@ -2,8 +2,9 @@
   <h1>Welcome!</h1>
   <p>This is a simple example of a home page.</p>
   <p>You can login or register below:</p>
-  <div class="buttons">
+  <div *ngIf="!isLoggedIn" class="buttons">
     <a routerLink="/login" class="button">Login</a>
     <a routerLink="/register" class="button">Register</a>
   </div>
 </div>
+

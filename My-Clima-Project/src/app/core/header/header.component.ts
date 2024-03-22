@@ -14,6 +14,10 @@ export class HeaderComponent {
     return this.userService.isLoggedIn;
   }
 
+  get userProfile(): string {
+    return this.userService.user?.username || '';
+  }
+
   logout() {
     this.userService.logout();
     this.router.navigate(['/home'])
