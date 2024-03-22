@@ -2,9 +2,7 @@
   <div class="climate-container">
     <div *ngFor="let clima of climates" class="climate">
       <img
-        src="https://clima.bg/userfiles/productlargeimages/product_4225.jpg"
-        alt="Климатик 1"
-      />
+        src="http://clima.bg/userfiles/productlargeimages/product_4225.jpg"/>
       <h2>{{ clima.model }}</h2>
       <p>Brand:{{ clima.brand }}</p>
       <p>CoolingCapacity: {{ clima.coolingCapacity }}</p>
@@ -15,7 +13,7 @@
         <div class="likes">
           <button class="likes">like</button>
           <p>
-            likes: <span>{{ clima.likes?.length || 0 }}</span>
+            likes: <span>{{ clima.likes.length || 0 }}</span>
           </p>
         </div>
       </div>

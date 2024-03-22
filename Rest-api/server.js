@@ -7,7 +7,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:4200", // Angular
+    origin: "http://localhost:4200",
+    credentials: true, //access-control-allow-credentials:true
   })
 );
 app.use(express.static(__dirname + "/public"));
@@ -24,15 +25,15 @@ app.get("/api/climates", async (req, res) => {
 
 app.post("/api/climates", async (req, res) => {
   const climate = new ClimateSchema({
-    owner: "5f9b3e4e4e0d3f3d3c3c3c3c",
-    brand: "Mitsubishi",
-    model: "MSZ-LN25VG",
-    coolingCapacity: 2.5,
-    heatingCapacity: 3.2,
-    energyEfficiencyRating: "A++",
-    price: 1000,
-    description: "A+++",
-    imageUrl: "https://www.google.com",
+      owner: "5f9b3e4e4e0d3f3d3c3c3c3c",
+      brand: "Mitsubishi",
+      model: "MSZ-LN25VG",
+      coolingCapacity: 2.5,
+      heatingCapacity: 3.2,
+      energyEfficiencyRating: "A++",
+      price: 1000,
+      description: "A+++",
+      imageUrl: "https://www.google.com",
   });
   const result = await climate.save();
   res.send(result);
@@ -40,3 +41,19 @@ app.post("/api/climates", async (req, res) => {
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+// app.post("/api/climates", async (req, res) => {
+//   const climate = new ClimateSchema({
+//       owner: "5f9b3e4e4e0d3f3d3c3c3c3c",
+//       brand: "Mitsubishi",
+//       model: "MSZ-LN25VG",
+//       coolingCapacity: 2.5,
+//       heatingCapacity: 3.2,
+//       energyEfficiencyRating: "A++",
+//       price: 1000,
+//       description: "A+++",
+//       imageUrl: "https://www.google.com",
+//   });
+//   const result = await climate.save();
+//   res.send(result);
+// });

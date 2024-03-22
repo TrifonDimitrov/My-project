@@ -12,6 +12,6 @@ export class AddClimaComponent {
   constructor(private api: ApiService) {}
 
   onSubmit(): void {
-    this.api.createClimate(this.newClimate).subscribe(this.newClimate);
+    this.api.createClimate(this.newClimate).subscribe(() => console.log('Climate created'));
   }
 }

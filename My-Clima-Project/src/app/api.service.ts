@@ -18,6 +18,6 @@ export class ApiService {
 
   createClimate(climateData: any): Observable<any> {
     const { apiUrl } = environment;
-    return this.http.post<any>(`${apiUrl}/climates`, climateData);
+    return this.http.post(`${apiUrl}/climates`, climateData);
   }
 }

@@ -5,3 +5,9 @@ export interface User {
     password: string;
     climates: string[]; // Масив с идентификатори на климатици, които притежава потребителят
 }
+
+export interface UserLogin {
+    username: string;
+    email: string;
+    password: string;
+}
