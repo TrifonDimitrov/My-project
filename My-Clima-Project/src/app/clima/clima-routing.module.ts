@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { AddClimaComponent } from './add-clima/add-clima.component';
 import { CurrentClimaComponent } from './current-clima/current-clima.component';
+import { AuthActivate } from '../guards/auth.activate';
 
 const routes: Routes = [
   {
@@ -12,7 +13,11 @@ const routes: Routes = [
       { path: ':modelId', component: CurrentClimaComponent },
     ],
   },
-  { path: 'add-model', component: AddClimaComponent },
+  {
+    path: 'add-model',
+    component: AddClimaComponent,
+    canActivate: [AuthActivate],
+  },
 ];
 
 @NgModule({
