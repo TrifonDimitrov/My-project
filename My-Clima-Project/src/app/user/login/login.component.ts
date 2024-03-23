@@ -13,6 +13,6 @@ export class LoginComponent {
   login(ev: Event, username: string, password: string) {
     ev.preventDefault();
     this.userService.login();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/models']);
   }
 }
