@@ -7,11 +7,12 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./add-clima.component.css']
 })
 export class AddClimaComponent {
-  newClimate: any = {};
 
   constructor(private api: ApiService) {}
 
-  onSubmit(): void {
-    this.api.createClimate(this.newClimate).subscribe(() => console.log('Climate created'));
+  addModel(ev: Event, brand: string, model: string, coolingCapacity: string, heatingCapacity: string, energyEfficiencyRating: string, price: string, description: string, imageUrl: string) {
+    ev.preventDefault();
+   this.api.createClima(brand, model, coolingCapacity, heatingCapacity, energyEfficiencyRating, price, description, imageUrl)
+    .subscribe();
   }
 }

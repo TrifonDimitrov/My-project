@@ -4,10 +4,10 @@ export interface Climate {
     brand: string;
     model: string;
     type: string;
-    coolingCapacity: number;
-    heatingCapacity: number;
+    coolingCapacity: string;
+    heatingCapacity: string;
     energyEfficiencyRating: string;
-    price: number;
+    price: string;
     description: string;
     imageUrl: string;
     createdAt: Date;

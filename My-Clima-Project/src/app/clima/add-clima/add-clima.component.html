@@ -1,24 +1,108 @@
-<form (ngSubmit)="onSubmit()">
+<!-- <form>
+  <div class="form-group">
+    <label for="brand">Марка:</label>
+    <input type="text" id="brand" name="brand" #inputBrand>
+  </div>
     <div class="form-group">
       <label for="model">Модел:</label>
-      <input type="text" id="model" name="model" [(ngModel)]="newClimate.model" class="form-control" required>
+      <input type="text" id="model" name="model" #inputModel>
     </div>
     <div class="form-group">
-      <label for="brand">Марка:</label>
-      <input type="text" id="brand" name="brand" [(ngModel)]="newClimate.brand" class="form-control" required>
+      <label for="coolingCapacity">Охлаждащ капацитет (kW):</label>
+      <input type="number" id="coolingCapacity" name="coolingCapacity" #inputCoolingCapacity>
     </div>
     <div class="form-group">
-      <label for="coolingCapacity">Охлаждащ капацитет (BTU):</label>
-      <input type="number" id="coolingCapacity" name="coolingCapacity" [(ngModel)]="newClimate.coolingCapacity" class="form-control" required>
+      <label for="heatingCapacity">Топлинен капацитет (kW):</label>
+      <input type="number" id="heatingCapacity" name="heatingCapacity" #inputHeatingCapacity>
     </div>
     <div class="form-group">
       <label for="energyEfficiencyRating">Енергийна ефективност:</label>
-      <input type="text" id="energyEfficiencyRating" name="energyEfficiencyRating" [(ngModel)]="newClimate.energyEfficiencyRating" class="form-control" required>
+      <input type="text" id="energyEfficiencyRating" name="energyEfficiencyRating" #inputEnergyEfficiencyRating>
     </div>
     <div class="form-group">
       <label for="price">Цена:</label>
-      <input type="number" id="price" name="price" [(ngModel)]="newClimate.price" class="form-control" required>
+      <input type="number" id="price" name="price" #inputPrice>
     </div>
-    <button type="submit" class="btn btn-primary">Добави климатик</button>
-  </form>
+    <div class="form-group">
+      <label for="description">Описание:</label>
+      <input type="text" id="description" name="description" #inputDescription>
+    <div class="form-group">
+      <label for="imageUrl">Снимка:</label>
+      <input type="text" id="imageUrl" name="imageUrl" #inputImageUrl>
+    <button class="public" (click)="addModel(
+    inputBrand.value,
+    inputModel.value, 
+    inputCoolingCapacity.value,
+    inputHeatingCapacity.value,
+    inputEnergyEfficiencyRating.value,
+    inputPrice.value,
+    inputDescription.value,
+    inputImageUrl.value )">Добави климатик</button>
+  </form> -->
 
+<form>
+  <div class="form-group">
+    <label for="brand">Марка:</label>
+    <input type="text" id="brand" name="brand" #inputBrand />
+  </div>
+  <div class="form-group">
+    <label for="model">Модел:</label>
+    <input type="text" id="model" name="model" #inputModel />
+  </div>
+  <div class="form-group">
+    <label for="coolingCapacity">Охлаждащ капацитет (kW):</label>
+    <input
+      type="text"
+      id="coolingCapacity"
+      name="coolingCapacity"
+      #inputCoolingCapacity
+    />
+  </div>
+  <div class="form-group">
+    <label for="heatingCapacity">Топлинен капацитет (kW):</label>
+    <input
+      type="text"
+      id="heatingCapacity"
+      name="heatingCapacity"
+      #inputHeatingCapacity
+    />
+  </div>
+  <div class="form-group">
+    <label for="energyEfficiencyRating">Енергийна ефективност:</label>
+    <input
+      type="text"
+      id="energyEfficiencyRating"
+      name="energyEfficiencyRating"
+      #inputEnergyEfficiencyRating
+    />
+  </div>
+  <div class="form-group">
+    <label for="price">Цена:</label>
+    <input type="text" id="price" name="price" #inputPrice />
+  </div>
+  <div class="form-group">
+    <label for="description">Описание:</label>
+    <input type="text" id="description" name="description" #inputDescription />
+  </div>
+  <div class="form-group">
+    <label for="imageUrl">Снимка:</label>
+    <input type="text" id="imageUrl" name="imageUrl" #inputImageUrl />
+  </div>
+  <button
+    class="public"
+    (click)="
+      addModel($event,
+        inputModel.value,
+        inputBrand.value,
+        inputCoolingCapacity.value,
+        inputHeatingCapacity.value,
+        inputEnergyEfficiencyRating.value,
+        inputPrice.value,
+        inputDescription.value,
+        inputImageUrl.value
+      )
+    "
+  >
+    Добави климатик
+  </button>
+</form>

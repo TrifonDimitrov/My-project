@@ -12,12 +12,14 @@ export class ApiService {
 
   getClimates() {
     const { apiUrl } = environment;
-
     return this.http.get<Climate[]>(`${apiUrl}/climates`);
   }
 
-  createClimate(climateData: any): Observable<any> {
+  createClima(brand: string, model: string, coolingCapacity: string, heatingCapacity: string, energyEfficiencyRating: string, price: string, description: string, imageUrl: string) {
     const { apiUrl } = environment;
-    return this.http.post(`${apiUrl}/climates`, climateData);
+    return this.http.post<Climate>(`${apiUrl}/climates`, {brand, model, coolingCapacity, heatingCapacity, energyEfficiencyRating, price, description, imageUrl});
+  
   }
+
+  
 }

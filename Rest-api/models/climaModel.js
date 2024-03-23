@@ -16,17 +16,20 @@ const ClimateSchema = new mongoose.Schema({
         required: true
     },
     coolingCapacity: {
-        type: Number,
+        type: String,
         required: true
     },
-    heatingCapacity: Number,
+    heatingCapacity: {
+        type: String,
+        required: true
+    },
     energyEfficiencyRating: {
         type: String,
         enum: ['A+++', 'A++', 'A+', 'A', 'B', 'C'],
         required: true
     },
     price: {
-        type: Number,
+        type: String,
         required: true
     },
     description: String,
