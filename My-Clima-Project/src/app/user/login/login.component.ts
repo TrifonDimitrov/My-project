@@ -11,9 +11,13 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent {
   constructor(private userService: UserService, private router: Router) {}
 
-  login(from: NgForm) {
+  login(form: NgForm) { // Тук се приема формата, която ще се подаде от шаблона
+    console.log(form.value);
     
-    this.userService.login();
+    if (form.invalid) { 
+      return;  
+    }
+    this.userService.login(); 
     this.router.navigate(['/models']);
   }
 }

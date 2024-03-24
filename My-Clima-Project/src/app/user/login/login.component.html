@@ -1,14 +1,31 @@
 <div class="login-page">
   <div class="form">
     <form class="login-form" #form="ngForm" (ngSubmit)="login(form)">
-      <input type="text" placeholder="username" #inputUserName />
-      <p class="error">Username is required!</p>
-      <input type="password" placeholder="password" #inputPassword />
-      <p class="error">Password is required!</p>
+      <input type="text" placeholder="username" name="username" ngModel #inputUserName="ngModel" required />
+      <ng-container *ngIf="inputUserName.touched">
+        <p class="error" *ngIf="inputUserName.errors?.['required']" >Username is required!</p>
+      </ng-container>
+      <input type="password" placeholder="password" name="password" ngModel #inputPassword="ngModel" required />
+      <ng-container *ngIf="inputPassword.touched">
+        <p class="error" *ngIf="inputPassword.errors?.['required']">Password is required!</p>
+      </ng-container>
+      
       <button>Login</button>
       <p class="message">Not Registered?<a routerLink="/register">Create an account</a></p>
     </form>
   </div>
 </div>
 
-
+<!-- 
+<div class="login-page">
+  <div class="form">
+    <form class="login-form" #form="ngForm" (ngSubmit)="login(form)" novalidate>
+      <input type="text" placeholder="username" name="username" ngModel required #inputUserName="ngModel" />
+      <p class="error" *ngIf="inputUserName.invalid && (inputUserName.dirty || inputUserName.touched)">Username is required!</p>
+      <input type="password" placeholder="password" name="password" ngModel required #inputPassword="ngModel" />
+      <p class="error" *ngIf="inputPassword.invalid && (inputPassword.dirty || inputPassword.touched)">Password is required!</p>
+      <button [disabled]="form.invalid">Login</button>
+      <p class="message">Not Registered?<a routerLink="/register">Create an account</a></p>
+    </form>
+  </div>
+</div> -->
