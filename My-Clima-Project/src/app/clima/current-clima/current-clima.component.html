@@ -1,1 +1,37 @@
-<p>current-clima works!</p>
+<div class="current-clima">
+    <h2>Детайли за климатик</h2>
+    <div class="clima-details">
+      <div class="detail">
+        <strong>Марка:</strong>
+        <span>{{ clima.brand }}</span>
+      </div>
+      <div class="detail">
+        <strong>Модел:</strong>
+        <span>{{ clima.model }}</span>
+      </div>
+      <div class="detail">
+        <strong>Охлаждащ капацитет (kW):</strong>
+        <span>{{ clima.coolingCapacity }}</span>
+      </div>
+      <div class="detail">
+        <strong>Топлинен капацитет (kW):</strong>
+        <span>{{ clima.heatingCapacity }}</span>
+      </div>
+      <div class="detail">
+        <strong>Енергийна ефективност:</strong>
+        <span>{{ clima.energyEfficiencyRating }}</span>
+      </div>
+      <div class="detail">
+        <strong>Цена:</strong>
+        <span>{{ clima.price }}</span>
+      </div>
+      <div class="detail">
+        <strong>Описание:</strong>
+        <span>{{ clima.description }}</span>
+      </div>
+      <div class="detail">
+        <!-- <strong>Снимка:</strong> -->
+        <img [src]="clima.imageUrl" alt="Изображение на климатика">
+      </div>
+    </div>
+  </div>

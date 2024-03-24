@@ -2,20 +2,14 @@
   <div class="climate-container">
     <div *ngFor="let clima of climates" class="climate">
       <img
-        src="http://clima.bg/userfiles/productlargeimages/product_4225.jpg"/>
+        [src]="clima.imageUrl"/>
       <h2>{{ clima.model }}</h2>
       <p>Brand:{{ clima.brand }}</p>
       <p>CoolingCapacity: {{ clima.coolingCapacity }}</p>
       <p>EnergyEfficiencyRating: {{ clima.energyEfficiencyRating }}</p>
       <p>Price: {{ clima.price }} лв.</p>
       <div *ngIf="isLoggedIn" class="button">
-        <button class="Details">Details</button>
-        <div class="likes">
-          <button class="likes">like</button>
-          <p>
-            likes: <span>{{ clima.likes.length || 0 }}</span>
-          </p>
-        </div>
+        <button [routerLink]="clima._id" class="Details">Details</button>
       </div>
     </div>
   </div>

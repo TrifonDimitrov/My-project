@@ -1,3 +1,70 @@
+<form>
+  <div class="form-group">
+    <label for="brand">Brand:</label>
+    <input type="text" id="brand" name="brand" #inputBrand />
+  </div>
+  <div class="form-group">
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model" #inputModel />
+  </div>
+  <div class="form-group">
+    <label for="coolingCapacity">CoolingCapacity (kW):</label>
+    <input
+      type="text"
+      id="coolingCapacity"
+      name="coolingCapacity"
+      #inputCoolingCapacity
+    />
+  </div>
+  <div class="form-group">
+    <label for="heatingCapacity">HeatingCapacity (kW):</label>
+    <input
+      type="text"
+      id="heatingCapacity"
+      name="heatingCapacity"
+      #inputHeatingCapacity
+    />
+  </div>
+  <div class="form-group">
+    <label for="energyEfficiencyRating">EnergyEfficiencyRating</label>
+    <input
+      type="text"
+      id="energyEfficiencyRating"
+      name="energyEfficiencyRating"
+      #inputEnergyEfficiencyRating
+    />
+  </div>
+  <div class="form-group">
+    <label for="price">Price:</label>
+    <input type="text" id="price" name="price" #inputPrice />
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" #inputDescription />
+  </div>
+  <div class="form-group">
+    <label for="imageUrl">ImageUrl:</label>
+    <input type="text" id="imageUrl" name="imageUrl" #inputImageUrl />
+  </div>
+  <button
+    class="public"
+    (click)="
+      addModel($event,
+      inputBrand.value,
+        inputModel.value,
+        inputCoolingCapacity.value,
+        inputHeatingCapacity.value,
+        inputEnergyEfficiencyRating.value,
+        inputPrice.value,
+        inputDescription.value,
+        inputImageUrl.value
+      )
+    "
+  >
+    Добави климатик
+  </button>
+</form>
+
 <!-- <form>
   <div class="form-group">
     <label for="brand">Марка:</label>
@@ -39,70 +106,3 @@
     inputDescription.value,
     inputImageUrl.value )">Добави климатик</button>
   </form> -->
-
-<form>
-  <div class="form-group">
-    <label for="brand">Марка:</label>
-    <input type="text" id="brand" name="brand" #inputBrand />
-  </div>
-  <div class="form-group">
-    <label for="model">Модел:</label>
-    <input type="text" id="model" name="model" #inputModel />
-  </div>
-  <div class="form-group">
-    <label for="coolingCapacity">Охлаждащ капацитет (kW):</label>
-    <input
-      type="text"
-      id="coolingCapacity"
-      name="coolingCapacity"
-      #inputCoolingCapacity
-    />
-  </div>
-  <div class="form-group">
-    <label for="heatingCapacity">Топлинен капацитет (kW):</label>
-    <input
-      type="text"
-      id="heatingCapacity"
-      name="heatingCapacity"
-      #inputHeatingCapacity
-    />
-  </div>
-  <div class="form-group">
-    <label for="energyEfficiencyRating">Енергийна ефективност:</label>
-    <input
-      type="text"
-      id="energyEfficiencyRating"
-      name="energyEfficiencyRating"
-      #inputEnergyEfficiencyRating
-    />
-  </div>
-  <div class="form-group">
-    <label for="price">Цена:</label>
-    <input type="text" id="price" name="price" #inputPrice />
-  </div>
-  <div class="form-group">
-    <label for="description">Описание:</label>
-    <input type="text" id="description" name="description" #inputDescription />
-  </div>
-  <div class="form-group">
-    <label for="imageUrl">Снимка:</label>
-    <input type="text" id="imageUrl" name="imageUrl" #inputImageUrl />
-  </div>
-  <button
-    class="public"
-    (click)="
-      addModel($event,
-        inputModel.value,
-        inputBrand.value,
-        inputCoolingCapacity.value,
-        inputHeatingCapacity.value,
-        inputEnergyEfficiencyRating.value,
-        inputPrice.value,
-        inputDescription.value,
-        inputImageUrl.value
-      )
-    "
-  >
-    Добави климатик
-  </button>
-</form>

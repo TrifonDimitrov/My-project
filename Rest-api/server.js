@@ -23,20 +23,53 @@ app.get("/api/climates", async (req, res) => {
   res.send(data);
 });
 
+app.get("/api/climates/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const clima = await ClimateSchema.findById(id);
+    if (!clima) {
+      return res.sendStatus(404).json({ message: "Climate not found" });
+    }
+    res.send(clima);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.post("/api/climates", async (req, res) => {
-  const { brand, model, coolingCapacity, heatingCapacity, energyEfficiencyRating, price, description, imageUrl } = req.body;
-  
- await ClimateSchema.create({ brand, model, coolingCapacity, heatingCapacity, energyEfficiencyRating, price, description, imageUrl }).then((data) => {
-    res.send(data);
-  }).catch((err) => {
-    res.send(err);
-  });
-  
-   
-    
-  
-  
-  
+  try {
+    // Извличане на данните от тялото на заявката
+    const {
+      brand,
+      model,
+      coolingCapacity,
+      heatingCapacity,
+      energyEfficiencyRating,
+      price,
+      description,
+      imageUrl,
+    } = req.body;
+
+    const climate = new ClimateSchema({
+      brand,
+      model,
+      coolingCapacity,
+      heatingCapacity,
+      energyEfficiencyRating,
+      price,
+      description,
+      imageUrl,
+    });
+
+    // Записване на данните в базата данни
+    const result = await climate.save();
+    res.send(result);
+
+    // Връщане на статус код 204, което означава, че заявката е успешна, но няма съдържание за връщане
+    res.sendStatus(204);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 const port = process.env.PORT || 3000;
