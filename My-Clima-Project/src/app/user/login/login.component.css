@@ -55,5 +55,8 @@ body{
 .form .message a:hover{
     color: #0ec490;
 }
+.error{
+    color: red;
+}
 
 

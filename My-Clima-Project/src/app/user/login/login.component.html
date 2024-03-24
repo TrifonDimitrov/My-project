@@ -1,9 +1,11 @@
 <div class="login-page">
   <div class="form">
-    <form action="" class="login-form">
+    <form class="login-form" #form="ngForm" (ngSubmit)="login(form)">
       <input type="text" placeholder="username" #inputUserName />
+      <p class="error">Username is required!</p>
       <input type="password" placeholder="password" #inputPassword />
-      <button (click)="login($event, inputUserName.value, inputPassword.value)" >Login</button>
+      <p class="error">Password is required!</p>
+      <button>Login</button>
       <p class="message">Not Registered?<a routerLink="/register">Create an account</a></p>
     </form>
   </div>
