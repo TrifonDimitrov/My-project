@@ -1,17 +1,39 @@
 <div class="login-page">
   <div class="form">
     <form class="login-form" #form="ngForm" (ngSubmit)="login(form)">
-      <input type="text" placeholder="username" name="username" ngModel #inputUserName="ngModel" required />
-      <ng-container *ngIf="inputUserName.touched">
-        <p class="error" *ngIf="inputUserName.errors?.['required']" >Username is required!</p>
+      <input
+        type="text"
+        placeholder="email"
+        name="email"
+        ngModel
+        #inputEmail="ngModel"
+        required
+        [appEmail]="['bg', 'com']"
+      />
+      <ng-container *ngIf="inputEmail.touched">
+        <p class="error" *ngIf="inputEmail.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">Email is not valid!</p>
       </ng-container>
-      <input type="password" placeholder="password" name="password" ngModel #inputPassword="ngModel" required />
+      <input
+        type="password"
+        placeholder="password"
+        name="password"
+        ngModel
+        #inputPassword="ngModel"
+        required
+      />
       <ng-container *ngIf="inputPassword.touched">
-        <p class="error" *ngIf="inputPassword.errors?.['required']">Password is required!</p>
+        <p class="error" *ngIf="inputPassword.errors?.['required']">
+          Password is required!
+        </p>
       </ng-container>
-      
+
       <button>Login</button>
-      <p class="message">Not Registered?<a routerLink="/register">Create an account</a></p>
+      <p class="message">
+        Not Registered?<a routerLink="/register">Create an account</a>
+      </p>
     </form>
   </div>
 </div>
