@@ -1,30 +1,61 @@
 <div class="register-page">
-    <div class="form">
-      <form class="register-form">
-        <input
-          type="text"
-          placeholder="Username"
-          name="username"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          name="email"
-        />
+  <div class="form">
+    <form class="register" [formGroup]="form" (ngSubmit)="register()">
+      <input
+        type="text"
+        placeholder="Username"
+        name="username"
+        formControlName="userName"
+      />
+      <ng-container *ngIf="form.get('userName')?.touched">
+        <p class="error" *ngIf="form.get('userName')?.errors?.['required']">
+          Username is required!
+        </p>
+        <p class="error" *ngIf="form.get('userName')?.errors?.['minlength']">
+          Username must be at least 4 characters!
+        </p>
+      </ng-container>
+
+      <input
+        type="email"
+        placeholder="Email"
+        name="email"
+        formControlName="email"
+      />
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="form.get('email')?.errors?.['emailValidator']">
+          Email is not valid!
+        </p>
+      </ng-container>
+      <ng-contaiiner formGroupName="passGroup">
         <input
           type="password"
           placeholder="Password"
           name="password"
+          formControlName="password"
         />
         <input
           type="password"
           placeholder="Confirm Password"
-          name="confirmPassword"
+          name="rePassword"
+          formControlName="rePassword"
         />
-        <button>Register</button>
-        <p class="message">
-          Already Registered?<a routerLink="/login">Login</a>
-        </p>
-      </form>
-    </div>
+        <ng-container *ngIf="form.get('passGroup')?.get('rePassword')?.touched">
+          <p
+            class="error"
+            *ngIf="form.get('passGroup')?.errors?.['matchPasswords'] || 
+          form.get('passGroup')?.get('rePassword')?.errors?.['required']"
+          >
+            Repeat password does not match password!
+          </p>
+        </ng-container>
+      </ng-contaiiner>
+
+      <button>Register</button>
+      <p class="message">Already Registered?<a routerLink="/login">Login</a></p>
+    </form>
   </div>
+</div>
