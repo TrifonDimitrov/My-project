@@ -1,19 +1,44 @@
-<form>
+<form #form="ngForm" (ngSubmit)="addModel(form)">
   <div class="form-group">
     <label for="brand">Brand:</label>
-    <input type="text" id="brand" name="brand" #inputBrand />
+    <input
+      type="text"
+      id="brand"
+      name="brand"
+      #inputBrand="ngModel"
+      ngModel
+      required
+    />
   </div>
+  <ng-container *ngIf="inputBrand.touched">
+    <p class="error" *ngIf="inputBrand?.errors?.['required']">
+      Brand is required!
+    </p>
+  </ng-container>
   <div class="form-group">
     <label for="model">Model:</label>
-    <input type="text" id="model" name="model" #inputModel />
+    <input
+      type="text"
+      id="model"
+      name="model"
+      #inputModel="ngModel"
+      ngModel
+      required
+    />
   </div>
+  <ng-container *ngIf="inputModel.touched">
+    <p class="error" *ngIf="inputModel?.errors?.['required']">
+      Model is required!
+    </p>
+  </ng-container>
   <div class="form-group">
     <label for="coolingCapacity">CoolingCapacity (kW):</label>
     <input
       type="text"
       id="coolingCapacity"
       name="coolingCapacity"
-      #inputCoolingCapacity
+      #inputCoolingCapacity="ngModel"
+      ngModel
     />
   </div>
   <div class="form-group">
@@ -22,7 +47,8 @@
       type="text"
       id="heatingCapacity"
       name="heatingCapacity"
-      #inputHeatingCapacity
+      #inputHeatingCapacity="ngModel"
+      ngModel
     />
   </div>
   <div class="form-group">
@@ -31,38 +57,47 @@
       type="text"
       id="energyEfficiencyRating"
       name="energyEfficiencyRating"
-      #inputEnergyEfficiencyRating
+      #inputEnergyEfficiencyRating="ngModel"
+      ngModel
     />
   </div>
   <div class="form-group">
     <label for="price">Price:</label>
-    <input type="text" id="price" name="price" #inputPrice />
+    <input
+      type="text"
+      id="price"
+      name="price"
+      #inputPrice="ngModel"
+      ngModel
+      required
+    />
   </div>
+  <ng-container *ngIf="inputPrice.touched">
+    <p class="error" *ngIf="inputPrice?.errors?.['required']">
+      Price is required!
+    </p>
+  </ng-container>
   <div class="form-group">
     <label for="description">Description:</label>
-    <input type="text" id="description" name="description" #inputDescription />
+    <input
+      type="text"
+      id="description"
+      name="description"
+      #inputDescription="ngModel"
+      ngModel
+    />
   </div>
   <div class="form-group">
     <label for="imageUrl">ImageUrl:</label>
-    <input type="text" id="imageUrl" name="imageUrl" #inputImageUrl />
+    <input
+      type="text"
+      id="imageUrl"
+      name="imageUrl"
+      #inputImageUrl="ngModel"
+      ngModel
+    />
   </div>
-  <button
-    class="public"
-    (click)="
-      addModel($event,
-      inputBrand.value,
-        inputModel.value,
-        inputCoolingCapacity.value,
-        inputHeatingCapacity.value,
-        inputEnergyEfficiencyRating.value,
-        inputPrice.value,
-        inputDescription.value,
-        inputImageUrl.value
-      )
-    "
-  >
-    Добави климатик
-  </button>
+  <button class="public">Добави климатик</button>
 </form>
 
 <!-- <form>

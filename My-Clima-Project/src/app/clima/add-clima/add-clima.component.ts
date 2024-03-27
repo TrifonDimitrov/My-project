@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
@@ -9,27 +10,11 @@ import { ApiService } from 'src/app/api.service';
 export class AddClimaComponent {
   constructor(private api: ApiService) {}
 
-  addModel(
-    ev: Event,
-    brand: string,
-    model: string,
-    coolingCapacity: string,
-    heatingCapacity: string,
-    energyEfficiencyRating: string,
-    price: string,
-    description: string,
-    imageUrl: string
-  ) {
-    ev.preventDefault();
-    this.api.createClima(
-      brand,
-      model,
-      coolingCapacity,
-      heatingCapacity,
-      energyEfficiencyRating,
-      price,
-      description,
-      imageUrl
-    );
+  addModel(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+    console.log(form.value);
+    
   }
 }
