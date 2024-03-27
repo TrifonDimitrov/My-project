@@ -8,9 +8,9 @@
     </div>
     <ng-container *ngIf="!showEditForm">
       <div class="profile-info">
-        <h2>Name: {{UserProfile.username}}</h2>
-        <p>Email: {{UserProfile.email}}</p>
-        <p>Tel: {{UserProfile.tel}}</p>
+        <h2>Name: {{ UserProfile.username }}</h2>
+        <p>Email: {{ UserProfile.email }}</p>
+        <p>Tel: {{ UserProfile.tel }}</p>
       </div>
       <button class="Edit-button" (click)="onToggle()">Edit</button>
     </ng-container>
@@ -26,6 +26,11 @@
             [value]="UserProfile.username"
             formControlName="username"
           />
+          <ng-container *ngIf="form.get('username')?.touched">
+            <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+              Username is required!
+            </p>
+          </ng-container>
           <p>Email:</p>
           <input
             type="text"
@@ -34,9 +39,31 @@
             [value]="UserProfile.email"
             formControlName="email"
           />
+          <ng-container *ngIf="form.get('email')?.touched">
+            <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+              Email is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="form.get('email')?.errors?.['emailValidator']"
+            >
+              Email is not valid!
+            </p>
+          </ng-container>
           <p>Tel:</p>
-          <input type="text" name="tel" id="tel" [value]="UserProfile.tel" formControlName="tel" />
-          <button class="Cancel-button">Cancel</button>
+          <input
+            type="text"
+            name="tel"
+            id="tel"
+            [value]="UserProfile.tel"
+            formControlName="tel"
+          />
+          <ng-container *ngIf="form.get('tel')?.touched">
+            <p class="error" *ngIf="form.get('tel')?.errors?.['required']">
+              Telephone is required!
+            </p>
+          </ng-container>
+          <button class="Cancel-button" (click)="onCancel($event)">Cancel</button>
           <button class="Save-button">Save</button>
         </div>
       </form>
