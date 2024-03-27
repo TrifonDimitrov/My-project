@@ -1,1 +1,60 @@
-<p>profile works!</p>
+<div class="profile-page">
+  <div class="profile-card">
+    <div class="profile-image">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVA_HrQLjkHiJ2Ag5RGuwbFeDKRLfldnDasw&usqp=CAU"
+        alt="Profile Picture"
+      />
+    </div>
+    <ng-container *ngIf="!showEditForm">
+      <div class="profile-info">
+        <h2>Name: {{UserProfile.username}}</h2>
+        <p>Email: {{UserProfile.email}}</p>
+        <p>Tel: {{UserProfile.tel}}</p>
+      </div>
+      <button class="Edit-button" (click)="onToggle()">Edit</button>
+    </ng-container>
+
+    <ng-container *ngIf="showEditForm">
+      <form [formGroup]="form" (ngSubmit)="onSave()">
+        <div class="profile-info">
+          <h2>User Name</h2>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            [value]="UserProfile.username"
+            formControlName="username"
+          />
+          <p>Email:</p>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            [value]="UserProfile.email"
+            formControlName="email"
+          />
+          <p>Tel:</p>
+          <input type="text" name="tel" id="tel" [value]="UserProfile.tel" formControlName="tel" />
+          <button class="Cancel-button">Cancel</button>
+          <button class="Save-button">Save</button>
+        </div>
+      </form>
+    </ng-container>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="contact-info">
+      <p>Contact us:</p>
+      <p>Email: info@example.com</p>
+      <p>Phone: +1234567890</p>
+    </div>
+    <div class="social-links">
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</footer>
