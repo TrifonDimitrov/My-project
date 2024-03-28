@@ -11,13 +11,14 @@ import { UserModule } from './user/user.module';
 import { ClimaModule } from './clima/clima.module';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import { appInterceptorProvider } from './app.interceptor';
 
 
 
 @NgModule({
   declarations: [AppComponent, PostsListComponent, HomeComponent, ErrorComponent],
   imports: [BrowserModule, CoreModule, SharedModule, HttpClientModule, FormsModule, UserModule, ClimaModule, AppRoutingModule ],
-  providers: [],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
