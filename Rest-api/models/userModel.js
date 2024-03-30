@@ -11,32 +11,24 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    username: {
+    userName: {
       type: String,
       required: true,
       unique: true,
-      minlength: [5, "Username should be at least 5 characters"],
+      minlength: [4, "Username should be at least 4 characters"],
     },
     password: {
       type: String,
       required: true,
-      minlength: [5, "Password should be at least 5 characters"],
+      minlength: [4, "Password should be at least 4 characters"],
     },
     tel: {
       type: String,
-      required: true,
-      unique: true,
     },
     climates: [
       {
         type: ObjectId,
         ref: "Climate",
-      },
-    ],
-    posts: [
-      {
-        type: ObjectId,
-        ref: "Post",
       },
     ],
   },
@@ -45,27 +37,29 @@ const userSchema = new mongoose.Schema(
 
 userSchema.methods = {
   matchPassword: function (password) {
-    return bcrypt.compare(password, this.password);
-  },
-};
+      return bcrypt.compare(password, this.password);
+  }
+}
 
-userSchema.pre("save", function (next) {
-  if (this.isModified("password")) {
-    bcrypt.genSalt(saltRounds, (err, salt) => {
-      if (err) {
-        next(err);
-      }
-      bcrypt.hash(this.password, salt, (err, hash) => {
-        if (err) {
-          next(err);
-        }
-        this.password = hash;
-        next();
-      });
-    });
-    return;
+userSchema.pre('save', function (next) {
+  if (this.isModified('password')) {
+      bcrypt.genSalt(saltRounds, (err, salt) => {
+          if (err) {
+              next(err);
+          }
+          bcrypt.hash(this.password, salt, (err, hash) => {
+              if (err) {
+                  next(err);
+              }
+              this.password = hash;
+              next();
+          })
+      })
+      return;
   }
   next();
 });
 
-module.exports = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;
