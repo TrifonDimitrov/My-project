@@ -1,0 +1,22 @@
+.error-massege {
+    color: red;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.notification {
+    color: green;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.success-massege {
+    color: green;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
