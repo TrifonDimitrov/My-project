@@ -13,7 +13,8 @@ const { apiUrl } = environment;
 
 @Injectable()
 class AppInterceptor implements HttpInterceptor {
-  API = '/api/';
+  API = '/api';
+  
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -24,7 +25,7 @@ class AppInterceptor implements HttpInterceptor {
         withCredentials: true,
       });
     }
-
+    
     return next.handle(req);
   }
 }
