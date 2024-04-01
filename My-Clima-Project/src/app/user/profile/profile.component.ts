@@ -13,13 +13,13 @@ export class ProfileComponent {
   showEditForm: boolean = false;
 
   UserProfile: UserProfile = {
-    username: 'Trif',
+    userName: 'Trif',
     email: 'Trif@gmail.com',
-    tel: '0888888888',
+    tel: '0585466328',
   };
 
   form = this.fb.group({
-    username: ['', [Validators.required]],
+    userName: ['', [Validators.required]],
     email: ['', [Validators.required, emailValidator(EMAIL_DOMAIN)]],
     tel: ['', [Validators.required]],
   });

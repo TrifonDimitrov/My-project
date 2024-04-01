@@ -8,7 +8,7 @@
     </div>
     <ng-container *ngIf="!showEditForm">
       <div class="profile-info">
-        <h2>Name: {{ UserProfile.username }}</h2>
+        <h2>Name: {{ UserProfile.userName }}</h2>
         <p>Email: {{ UserProfile.email }}</p>
         <p>Tel: {{ UserProfile.tel }}</p>
       </div>
@@ -23,8 +23,8 @@
             type="text"
             name="username"
             id="username"
-            [value]="UserProfile.username"
-            formControlName="username"
+            [value]="UserProfile.userName"
+            formControlName="userName"
           />
           <ng-container *ngIf="form.get('username')?.touched">
             <p class="error" *ngIf="form.get('username')?.errors?.['required']">

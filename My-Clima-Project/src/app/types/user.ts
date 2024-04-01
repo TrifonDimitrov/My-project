@@ -1,21 +1,23 @@
 export interface User {
-    _id: string;
-    username: string;
+    id: string;
+    userName: string;
     email: string;
     password: string;
-    tel: string;
-    climates: string[]; // Масив с идентификатори на климатици, които притежава потребителят
+    climates: string[];
+    created_at: string,
+    updatedAt: string,
+    __v: number;
 }
 
 export interface UserLogin {
-    username: string;
+    userName: string;
     email: string;
     password: string;
     id: string;
 }
 
 export interface UserProfile {
-    username: string;
+    userName: string;
     email: string;
     tel: string;
 }

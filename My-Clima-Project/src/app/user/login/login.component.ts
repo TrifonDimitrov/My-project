@@ -15,12 +15,17 @@ export class LoginComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   login(form: NgForm) { // Тук се приема формата, която ще се подаде от шаблона
-    console.log(form.value);
-    
     if (form.invalid) { 
       return;  
     }
-    this.userService.login(); 
-    this.router.navigate(['/models']);
+
+    const { email, password } = form.value; // Тук се взимат стойностите на email и password от формата
+
+
+    this.userService.login(email, password).subscribe(() => { // Тук се извиква метода login от userService, който връща Observable и се подава email и password
+      this.router.navigate(['/models']);
+    
+    });
+
   }
 }

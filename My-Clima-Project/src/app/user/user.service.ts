@@ -1,38 +1,64 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { UserLogin } from '../types/user';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class UserService implements OnDestroy {
+  private user$$ = new BehaviorSubject<UserLogin | undefined>(undefined);
+  private user$ = this.user$$.asObservable();
+
   user: UserLogin | undefined;
   USER_KEY = '[user]';
+
+  userSubscribsion: Subscription;
 
   get isLoggedIn(): boolean {
     return !!this.user;
   }
 
-  constructor() {
-    try {
-      const lsUser = localStorage.getItem(this.USER_KEY) || '';
-      this.user = JSON.parse(lsUser);
-    } catch (error) {
-      this.user = undefined;
-    }
+  constructor(private http: HttpClient) {
+    this.userSubscribsion = this.user$.subscribe((user) => {
+      this.user = user;
+    });
   }
 
-  login() {
-    this.user = {
-      id: '5f9b3e4e4e0d3f3d3c3c3c3c',
-      username: 'test',
-      email: 'test@abv.bg',
-      password: '123',
-    };
-    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+  login(email: string, password: string) {
+    return this.http
+      .post<UserLogin>('/api/login', { email, password })
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  register(
+    userName: string,
+    email: string,
+    password: string,
+    rePassword: string
+  ) {
+   
+    return this.http
+      .post<UserLogin>('/api/register', {
+        userName,
+        email,
+        password,
+        rePassword,
+      })
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  getProfile() {
+    return this.http.get<UserLogin>('/api/users/profile').pipe(tap((user) => this.user$$.next(user)));
   }
 
   logout() {
-    this.user = undefined;
-    localStorage.removeItem(this.USER_KEY);
+    return this.http
+      .post('/api/logout', {})
+      .pipe(tap(() => this.user$$.next(undefined)));
+  }
+
+  ngOnDestroy(): void {
+    this.userSubscribsion.unsubscribe();
   }
 }

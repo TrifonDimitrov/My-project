@@ -4,7 +4,7 @@
       <input
         type="text"
         placeholder="Username"
-        name="username"
+        name="userName"
         formControlName="userName"
       />
       <ng-container *ngIf="form.get('userName')?.touched">
@@ -55,7 +55,7 @@
       </ng-contaiiner>
 
       <button>Register</button>
-      <p class="message">Already Registered?<a routerLink="/login">Login</a></p>
+      <p class="message">Already Registered?<a routerLink="/auth/login">Login</a></p>
     </form>
   </div>
 </div>
