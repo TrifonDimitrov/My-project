@@ -4,17 +4,15 @@
     <div class="header-right">
       <a routerLink="/home" routerLinkActive="active">Home</a>
       <a routerLink="/models" routerLinkActive="active">Models</a>
-      
       <a routerLink="/about" routerLinkActive="active">About</a>
       <div *ngIf="!isLoggedIn">
-        <a routerLink="/login" routerLinkActive="active">Login</a>
-        <a routerLink="/register" routerLinkActive="active">Register</a>
+        <a routerLink="/auth/login" routerLinkActive="active">Login</a>
+        <a routerLink="/auth/register" routerLinkActive="active">Register</a>
       </div>
       <div *ngIf="isLoggedIn">
         <a routerLink="/add-model" routerLinkActive="active">Add model</a>
-        <a routerLink="/profile" routerLinkActive="active">{{userProfile}}`s Profile</a>
+        <a routerLink="/auth/profile" routerLinkActive="active">{{userName}}`s Profile</a>
         <a (click)="logout()" routerLink="/logout" routerLinkActive="active">Logout</a>
-        
       </div>
     </div>
   </div>

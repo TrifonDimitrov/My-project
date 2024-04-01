@@ -22,9 +22,6 @@ const userSchema = new mongoose.Schema(
       required: true,
       minlength: [4, "Password should be at least 4 characters"],
     },
-    tel: {
-      type: String,
-    },
     climates: [
       {
         type: ObjectId,
@@ -60,6 +57,6 @@ userSchema.pre('save', function (next) {
   next();
 });
 
-const User = mongoose.model("User", userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);
+// const User = mongoose.model("User", userSchema);
+// module.exports = User;

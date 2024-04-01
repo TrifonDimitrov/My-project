@@ -1,7 +1,7 @@
 const { userModel, tokenBlackList } = require("../models");
 
 const utils = require("../utils");
-const { authCookieName } = require("../app-config");
+const {authCookieName} = require('../app-config');
 
 const bsonToJson = (data) => {
   return JSON.parse(JSON.stringify(data));
@@ -82,7 +82,7 @@ function login(req, res, next) {
 function logout(req, res) {
   const token = req.cookies[authCookieName];
 
-  tokenBlacklistModel
+  tokenBlackList
     .create({ token })
     .then(() => {
       res
@@ -93,8 +93,37 @@ function logout(req, res) {
     .catch((err) => res.send(err));
 }
 
+function getProfileInfo(req, res, next) {
+  const { _id: userId } = req.user;
+
+  userModel
+    .findOne({ _id: userId }, { password: 0, __v: 0 }) //finding by Id and returning without password and __v
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch(next);
+}
+
+function editProfileInfo(req, res, next) {
+  const { _id: userId } = req.user;
+  const { username, email } = req.body;
+
+  userModel
+    .findOneAndUpdate(
+      { _id: userId },
+      { username, email },
+      { runValidators: true, new: true }
+    )
+    .then((x) => {
+      res.status(200).json(x);
+    })
+    .catch(next);
+}
+
 module.exports = {
   register,
   login,
   logout,
+  getProfileInfo,
+  editProfileInfo,
 };

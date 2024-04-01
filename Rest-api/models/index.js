@@ -4,7 +4,7 @@ const userModel = require('./userModel')
 
 
 module.exports = {
-    climaModel,
-    userModel,
-    tokenBlackList
-}
+   climaModel,
+   tokenBlackList,
+   userModel,
+};
