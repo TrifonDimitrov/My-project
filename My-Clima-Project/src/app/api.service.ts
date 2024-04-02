@@ -12,7 +12,7 @@ export class ApiService {
 
   getClima(id: string) {
     const { apiUrl } = environment;
-    return this.http.get<Climate>(`${apiUrl}/climates/${id}`)
+    return this.http.get<Climate>(`${apiUrl}/climates/${id}`);
   }
 
   getClimates() {
@@ -30,8 +30,7 @@ export class ApiService {
     description: string,
     imageUrl: string
   ) {
-    const { apiUrl } = environment;
-    return this.http.post<Climate>(`${apiUrl}/climates`, {
+    return this.http.post<Climate>('/api/climates', {
       brand,
       model,
       coolingCapacity,
