@@ -1,19 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmailDirective } from './validators/email.directive';
-
-
-
+import { SlicePipe } from './pipe/slice.pipe';
 
 @NgModule({
-  declarations: [
-    EmailDirective,
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    EmailDirective
-  ]
+  declarations: [EmailDirective, SlicePipe],
+  imports: [CommonModule],
+  exports: [EmailDirective, SlicePipe],
 })
-export class SharedModule { }
+export class SharedModule {}
