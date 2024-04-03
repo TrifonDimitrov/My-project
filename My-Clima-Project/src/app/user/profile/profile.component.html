@@ -58,11 +58,6 @@
             [value]="UserProfile.tel"
             formControlName="tel"
           />
-          <ng-container *ngIf="form.get('tel')?.touched">
-            <p class="error" *ngIf="form.get('tel')?.errors?.['required']">
-              Telephone is required!
-            </p>
-          </ng-container>
           <button class="Cancel-button" (click)="onCancel($event)">Cancel</button>
           <button class="Save-button">Save</button>
         </div>

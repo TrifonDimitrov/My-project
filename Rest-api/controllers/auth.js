@@ -1,7 +1,7 @@
 const { userModel, tokenBlackList } = require("../models");
 
 const utils = require("../utils");
-const {authCookieName} = require('../app-config');
+const { authCookieName } = require("../app-config");
 
 const bsonToJson = (data) => {
   return JSON.parse(JSON.stringify(data));
@@ -120,10 +120,13 @@ function editProfileInfo(req, res, next) {
     .catch(next);
 }
 
+
+
 module.exports = {
   register,
   login,
   logout,
   getProfileInfo,
   editProfileInfo,
+  
 };

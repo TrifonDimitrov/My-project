@@ -30,7 +30,7 @@ function createClima(req, res, next) {
     description,
     imageUrl,
   } = req.body;
-  const { _id: owner } = req.user;
+
   climaModel
     .create({
       brand,
@@ -41,9 +41,47 @@ function createClima(req, res, next) {
       price,
       description,
       imageUrl,
-      owner,
+      owner: req.user._id,
     })
-    .then((clima) => res.json(clima))
+    .then((clima) => {
+      // След като получите резултата, извикайте .populate() за да популирате връзките
+      return climaModel.populate(clima, { path: "climates" });
+    })
+    .then((populatedClima) => {
+      res.status(201).json(populatedClima);
+    })
+    .catch(next);
+}
+
+function updateClima(req, res, next) {
+  const { climaId } = req.params;
+  console.log(req.params);
+  const {
+    brand,
+    model,
+    coolingCapacity,
+    heatingCapacity,
+    energyEfficiencyRating,
+    price,
+    description,
+    imageUrl,
+  } = req.body;
+
+  climaModel
+    .updateOne(
+      {
+        brand,
+        model,
+        coolingCapacity,
+        heatingCapacity,
+        energyEfficiencyRating,
+        price,
+        description,
+        imageUrl,
+        climaId,
+      }
+    )
+    .then((updatedClima) => res.json(updatedClima))
     .catch(next);
 }
 
@@ -51,4 +89,5 @@ module.exports = {
   getAll,
   getClima,
   createClima,
+  updateClima,
 };

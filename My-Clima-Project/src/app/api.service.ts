@@ -41,4 +41,29 @@ export class ApiService {
       imageUrl,
     });
   }
+
+  updateClima(
+    brand: string,
+    model: string,
+    coolingCapacity: string,
+    heatingCapacity: string,
+    energyEfficiencyRating: string,
+    price: string,
+    description: string,
+    imageUrl: string,
+    _id: string,
+  ) {
+    const { apiUrl } = environment;
+    return this.http.put<Climate>(`${apiUrl}/climates/${_id}`, {
+      brand,
+      model,
+      coolingCapacity,
+      heatingCapacity,
+      energyEfficiencyRating,
+      price,
+      description,
+      imageUrl,
+      _id,
+    });
+  }
 }

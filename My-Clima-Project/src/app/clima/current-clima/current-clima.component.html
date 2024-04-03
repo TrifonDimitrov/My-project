@@ -1,4 +1,129 @@
-<div class="current-clima">
+<!-- <div class="current-clima">
+  <button *ngIf="isOwner && !showEditForm" (click)="onToggle()">Edit</button>
+  <button *ngIf="isOwner && showEditForm" (click)="onCancel($event)">Cancel</button>
+  <h2>Детайли за климатик</h2>
+  <div class="clima-details">
+    <div class="detail" *ngIf="!showEditForm">
+      <strong>Марка:</strong>
+      <span>{{ clima.brand }}</span>
+    </div>
+    <div class="detail" *ngIf="showEditForm">
+      <strong>Марка:</strong>
+      <input type="text" [(ngModel)]="clima.brand" name="brand">
+    </div>
+
+
+    <div class="detail" *ngIf="!showEditForm">
+      <strong>Описание:</strong>
+      <span>{{ clima.description }}</span>
+    </div>
+    <div class="detail" *ngIf="showEditForm">
+      <strong>Описание:</strong>
+      <textarea [(ngModel)]="clima.description" name="description"></textarea>
+    </div>
+ <div class="detail">
+      <strong>Изображение:</strong>
+      <span>{{ clima.imageUrl }}</span>
+    </div>
+    <div class="detail">
+      <img [src]="clima.imageUrl" alt="Изображение на климатика">
+    </div>
+  </div>
+  <button *ngIf="isOwner && showEditForm" (click)="updateClima()">Save</button>
+</div> -->
+
+<ng-container *ngIf="!showEditForm">
+  <form [formGroup]="form" (ngSubmit)="onSave()">
+    <div class="current-clima">
+      <button class="Delete-button" (click)="onCancel($event)">Delete</button>
+      <button class="Save-button">Save</button>
+      <h2>Детайли за климатик</h2>
+      <div class="clima-details">
+        <div class="detail">
+          <strong>Марка:</strong>
+          <input
+            type="text"
+            name="brand"
+            id="brand"
+            [value]="clima.brand"
+            formControlName="brand"
+          />
+        </div>
+        <div class="detail">
+          <strong>Модел:</strong>
+          <input
+            type="text"
+            name="model"
+            id="model"
+            [value]="clima.model"
+            formControlName="model"
+          />
+        </div>
+        <div class="detail">
+          <strong>Охлаждащ капацитет (kW):</strong>
+          <input
+            type="text"
+            name="coolingCapacity"
+            id="coolingCapacity"
+            [value]="clima.coolingCapacity"
+            formControlName="coolingCapacity"
+          />
+        </div>
+        <div class="detail">
+          <strong>Топлинен капацитет (kW):</strong>
+          <input
+            type="text"
+            name="heatingCapacity"
+            id="heatingCapacity"
+            [value]="clima.heatingCapacity"
+            formControlName="heatingCapacity"
+          />
+        </div>
+        <div class="detail">
+          <strong>Енергийна ефективност:</strong>
+          <input
+            type="text"
+            name="energyEfficiencyRating"
+            id="energyEfficiencyRating"
+            [value]="clima.energyEfficiencyRating"
+            formControlName="energyEfficiencyRating"
+          />
+        </div>
+        <div class="detail">
+          <strong>Цена:</strong>
+          <input
+            type="text"
+            name="price"
+            id="price"
+            [value]="clima.price"
+            formControlName="price"
+          />
+        </div>
+        <div class="detail">
+          <strong>Описание:</strong>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            [value]="clima.description"
+            formControlName="description"
+          />
+        </div>
+        <div class="detail">
+          <img
+            [src]="clima.imageUrl"
+            alt="Изображение на климатика"
+            id="imageUrl"
+            formControlName="imageUrl"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-container>
+
+<ng-container *ngIf="showEditForm">
+  <div class="current-clima">
     <h2>Детайли за климатик</h2>
     <div class="clima-details">
       <div class="detail">
@@ -30,7 +155,8 @@
         <span>{{ clima.description }}</span>
       </div>
       <div class="detail">
-        <img [src]="clima.imageUrl" alt="Изображение на климатика">
+        <img [src]="clima.imageUrl" alt="Изображение на климатика" />
       </div>
     </div>
   </div>
+</ng-container>
