@@ -42,28 +42,37 @@ export class ApiService {
     });
   }
 
-  updateClima(
-    brand: string,
-    model: string,
-    coolingCapacity: string,
-    heatingCapacity: string,
-    energyEfficiencyRating: string,
-    price: string,
-    description: string,
-    imageUrl: string,
-    _id: string,
-  ) {
-    const { apiUrl } = environment;
-    return this.http.put<Climate>(`${apiUrl}/climates/${_id}`, {
-      brand,
-      model,
-      coolingCapacity,
-      heatingCapacity,
-      energyEfficiencyRating,
-      price,
-      description,
-      imageUrl,
-      _id,
-    });
+  updateClima(modelId: string, climaData: Partial<Climate>): Observable<any> {
+    return this.http.put<Climate>(`/api/climates/${modelId}`, climaData);
   }
+
+  deleteClima(modelId: string): Observable<any> {
+    return this.http.delete<Climate>(`/api/climates/${modelId}`);
+  }
+  
 }
+
+// updateClima(
+//   brand: string,
+//   model: string,
+//   coolingCapacity: string,
+//   heatingCapacity: string,
+//   energyEfficiencyRating: string,
+//   price: string,
+//   description: string,
+//   imageUrl: string,
+//   _id: object,
+// ) {
+//   const { apiUrl } = environment;
+//   return this.http.put<Climate>(`/api/climates/${_id}`, {
+//     brand,
+//     model,
+//     coolingCapacity,
+//     heatingCapacity,
+//     energyEfficiencyRating,
+//     price,
+//     description,
+//     imageUrl,
+//     _id,
+//   });
+// }

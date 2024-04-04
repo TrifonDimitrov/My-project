@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Climate } from 'src/app/types/climate.model';
 import { UserService } from 'src/app/user/user.service';
@@ -25,41 +25,42 @@ export class CurrentClimaComponent implements OnInit {
     price: [''],
     description: [''],
     imageUrl: [''],
-  
-  })
+  });
 
   constructor(
     private api: ApiService,
     private userServise: UserService,
     private activeRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.activeRoute.params.subscribe((params) => {
-      const modelId = params['modelId'];
+    this.activeRoute.params.subscribe((params) => { // Получавам параметъра от URL-а
+      const modelId = params['modelId']; 
       this.api.getClima(modelId).subscribe((clima: any) => {
-        this.clima = clima as Climate; // Тук се пази климатика, която ще се показва в шаблона
+        this.clima = clima; 
 
-        const ownerId = (this.clima.owner as any)?._id; // Тук се пази id на собственика на климатиката
+        const ownerId = clima.owner?._id; 
 
         this.userServise.getProfile().subscribe((user) => {
           this.currentUser = user;
-          return (this.isOwner = this.currentUser._id === ownerId); // Тук се проверява дали текущият потребител е собственик на климатиката
+          this.isOwner = this.currentUser._id === ownerId;
+          console.log(this.isOwner);
+          
+        });
+        this.form.setValue({
+          brand: this.clima.brand || '',
+          model: this.clima.model || '',
+          coolingCapacity: this.clima.coolingCapacity || '',
+          heatingCapacity: this.clima.heatingCapacity || '',
+          energyEfficiencyRating: this.clima.energyEfficiencyRating || '',
+          price: this.clima.price || '',
+          description: this.clima.description || '',
+          imageUrl: this.clima.imageUrl || '',
         });
       });
     });
-    const { brand, model, coolingCapacity, heatingCapacity, energyEfficiencyRating, price, description, imageUrl} = this.clima;
-    this.form.setValue({
-      brand,
-      model,
-      coolingCapacity,
-      heatingCapacity,
-      energyEfficiencyRating,
-      price,
-      description,
-      imageUrl
-    })
   }
 
   onToggle(): void {
@@ -68,30 +69,40 @@ export class CurrentClimaComponent implements OnInit {
 
   onSave(): void {
     if (this.form.invalid) {
+      console.error('Form is invalid');
       return;
     }
-    this.clima = this.form.value as Climate;
-    const { brand, model, coolingCapacity, heatingCapacity, energyEfficiencyRating, price, description, imageUrl } = this.clima;
-    this.api.updateClima(
-      brand,
-      model,
-      coolingCapacity,
-      heatingCapacity,
-      energyEfficiencyRating,
-      price,
-      description,
-      imageUrl,
-      this.clima._id
-      // Add the missing imageUrl argument here
-    ).subscribe(() => {
-      this.onToggle();
+
+    // Получаване на актуализираните данни от формата
+    const formData: Partial<Climate> = {
+      ...this.clima,
+      ...this.form.value,
+      brand: this.form.value.brand || undefined,
+      model: this.form.value.model || undefined,
+      coolingCapacity: this.form.value.coolingCapacity || undefined,
+      heatingCapacity: this.form.value.heatingCapacity || undefined,
+      energyEfficiencyRating: this.form.value.energyEfficiencyRating || undefined,
+      price: this.form.value.price || undefined,
+      description: this.form.value.description || undefined,
+      imageUrl: this.form.value.imageUrl || undefined,
+    };
+
+    this.api.updateClima(this.clima._id, formData).subscribe({
+      next: () => {
+        this.router.navigate(['/models']);
+        this.clima = formData as Climate; // Обновявам данните на климатиката 
+        this.onToggle(); // Затварям формата за редактиране
+      },
+      error: (error) => {
+        console.error('Failed to update clima', error);
+      },
     });
   }
 
-  onCancel(ev: Event): void {
-    ev.preventDefault();
-    this.onToggle();
+  
+  onDelete(): void {
+    this.api.deleteClima(this.clima._id).subscribe(() => {
+      this.router.navigate(['/models']);
+    });
   }
-
-  deleteClima(): void {}
 }

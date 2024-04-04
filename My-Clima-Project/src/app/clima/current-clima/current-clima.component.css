@@ -1,37 +1,53 @@
 .current-clima {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .current-clima h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .clima-details {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .detail {
-    margin-bottom: 10px;
-  }
-  
-  .detail strong {
-    font-weight: bold;
-  }
-  
-  .detail span {
-    margin-left: 10px;
-  }
-  
-  .detail img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-  }
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-  
+.current-clima h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.clima-details {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.detail {
+  margin-bottom: 10px;
+}
+
+.detail strong {
+  font-weight: bold;
+}
+
+.detail span {
+  margin-left: 10px;
+}
+
+.detail img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.Delete-button {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Save-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -8,8 +8,9 @@ router.get('/', climaController.getAll);
 router.post('/', auth(), climaController.createClima);
 
 
-router.get('/:climaId', climaController.getClima);
-router.put('/:climaId', climaController.updateClima);
+router.get('/:modelId', climaController.getClima);
+router.put('/:modelId', climaController.updateClima);
+router.delete('/:modelId', climaController.deleteClima);
 
 
 

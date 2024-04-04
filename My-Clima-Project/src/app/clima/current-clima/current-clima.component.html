@@ -31,11 +31,11 @@
   </div>
   <button *ngIf="isOwner && showEditForm" (click)="updateClima()">Save</button>
 </div> -->
-
-<ng-container *ngIf="!showEditForm">
-  <form [formGroup]="form" (ngSubmit)="onSave()">
+<!-- *ngIf="!showEditForm" -->
+<ng-container *ngIf="isOwner" >
+  <form  [formGroup]="form" (ngSubmit)="onSave()">
     <div class="current-clima">
-      <button class="Delete-button" (click)="onCancel($event)">Delete</button>
+      <button class="Delete-button" (click)="onDelete()">Delete</button>
       <button class="Save-button">Save</button>
       <h2>Детайли за климатик</h2>
       <div class="clima-details">
@@ -121,9 +121,9 @@
     </div>
   </form>
 </ng-container>
-
-<ng-container *ngIf="showEditForm">
-  <div class="current-clima">
+<!-- *ngIf="showEditForm" -->
+<ng-container *ngIf="!isOwner">
+  <div  class="current-clima">
     <h2>Детайли за климатик</h2>
     <div class="clima-details">
       <div class="detail">
